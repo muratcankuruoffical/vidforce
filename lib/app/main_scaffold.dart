@@ -29,9 +29,6 @@ class _MainScaffoldState extends State<MainScaffold> {
         context.go('/');
         break;
       case 1:
-        context.go('/my');
-        break;
-      case 2:
         context.go('/account');
         break;
     }
@@ -43,10 +40,8 @@ class _MainScaffoldState extends State<MainScaffold> {
     final location = GoRouterState.of(context).uri.toString();
     if (location == '/') {
       _currentIndex = 0;
-    } else if (location == '/my') {
+    } else if (location == '/account' || location.startsWith('/account')) {
       _currentIndex = 1;
-    } else if (location == '/account') {
-      _currentIndex = 2;
     }
 
     return Scaffold(
@@ -68,26 +63,23 @@ class _MainScaffoldState extends State<MainScaffold> {
               children: [
                 // Regular navigation items
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    _NavItem(
-                      icon: Icons.home_rounded,
-                      label: 'Home',
-                      isSelected: _currentIndex == 0,
-                      onTap: () => _onItemTapped(0),
+                    Expanded(
+                      child: _NavItem(
+                        icon: Icons.home_rounded,
+                        label: 'Home',
+                        isSelected: _currentIndex == 0,
+                        onTap: () => _onItemTapped(0),
+                      ),
                     ),
-                    const SizedBox(width: 80), // Space for Create button
-                    _NavItem(
-                      icon: Icons.photo_library_rounded,
-                      label: 'My',
-                      isSelected: _currentIndex == 1,
-                      onTap: () => _onItemTapped(1),
-                    ),
-                    _NavItem(
-                      icon: Icons.person_rounded,
-                      label: 'Account',
-                      isSelected: _currentIndex == 2,
-                      onTap: () => _onItemTapped(2),
+                    const SizedBox(width: 100), // Space for Create button
+                    Expanded(
+                      child: _NavItem(
+                        icon: Icons.person_rounded,
+                        label: 'Account',
+                        isSelected: _currentIndex == 1,
+                        onTap: () => _onItemTapped(1),
+                      ),
                     ),
                   ],
                 ),

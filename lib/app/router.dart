@@ -5,7 +5,6 @@ import '../features/home/home_screen.dart';
 import '../features/template_detail/template_detail_screen.dart';
 import '../features/generate/generate_screen.dart';
 import '../features/generate/result_viewer_screen.dart';
-import '../features/my_creations/my_creations_screen.dart';
 import '../features/account/account_screen.dart';
 import '../features/credits/credit_packs_screen.dart';
 import 'main_scaffold.dart';
@@ -17,7 +16,6 @@ class AppRoutes {
   static const String templateDetail = '/template/:id';
   static const String generate = '/generate/:id';
   static const String result = '/result/:id';
-  static const String myCreations = '/my';
   static const String account = '/account';
   static const String creditPacks = '/account/credits';
 }
@@ -37,12 +35,6 @@ final goRouter = GoRouter(
           path: AppRoutes.home,
           pageBuilder: (context, state) => const NoTransitionPage(
             child: HomeScreen(),
-          ),
-        ),
-        GoRoute(
-          path: AppRoutes.myCreations,
-          pageBuilder: (context, state) => const NoTransitionPage(
-            child: MyCreationsScreen(),
           ),
         ),
         GoRoute(
