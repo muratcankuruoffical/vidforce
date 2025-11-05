@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import '../../domain/entities/template.dart';
 import '../../domain/entities/media_type.dart';
 import '../../domain/entities/category.dart';
@@ -10,18 +11,18 @@ class MockData {
   MockData._();
 
   static const List<Category> categories = [
-    Category(id: 'cinematic', name: 'Cinematic', emoji: '🎬'),
-    Category(id: 'fantasy', name: 'Fantasy', emoji: '✨'),
-    Category(id: 'futuristic', name: 'Futuristic', emoji: '🚀'),
-    Category(id: 'artistic', name: 'Artistic', emoji: '🎨'),
-    Category(id: 'nature', name: 'Nature', emoji: '🌿'),
-    Category(id: 'abstract', name: 'Abstract', emoji: '🌀'),
-    Category(id: 'vintage', name: 'Vintage', emoji: '📷'),
-    Category(id: 'polaroid', name: 'Polaroid', emoji: '📸'),
-    Category(id: 'horror', name: 'Horror', emoji: '👻'),
-    Category(id: 'neon', name: 'Neon', emoji: '💫'),
-    Category(id: 'portrait', name: 'Portrait', emoji: '👤'),
-    Category(id: 'landscape', name: 'Landscape', emoji: '🏞️'),
+    Category(id: 'cinematic', name: 'Cinematic', icon: Icons.movie_rounded),
+    Category(id: 'fantasy', name: 'Fantasy', icon: Icons.auto_awesome),
+    Category(id: 'futuristic', name: 'Futuristic', icon: Icons.rocket_launch_rounded),
+    Category(id: 'artistic', name: 'Artistic', icon: Icons.palette_rounded),
+    Category(id: 'nature', name: 'Nature', icon: Icons.nature_rounded),
+    Category(id: 'abstract', name: 'Abstract', icon: Icons.blur_circular_rounded),
+    Category(id: 'vintage', name: 'Vintage', icon: Icons.camera_alt_rounded),
+    Category(id: 'polaroid', name: 'Polaroid', icon: Icons.photo_camera_rounded),
+    Category(id: 'horror', name: 'Horror', icon: Icons.nightlight_rounded),
+    Category(id: 'neon', name: 'Neon', icon: Icons.lightbulb_rounded),
+    Category(id: 'portrait', name: 'Portrait', icon: Icons.person_rounded),
+    Category(id: 'landscape', name: 'Landscape', icon: Icons.landscape_rounded),
   ];
 
   static final List<Template> templates = [

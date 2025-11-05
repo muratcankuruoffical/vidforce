@@ -62,50 +62,82 @@ class _MainScaffoldState extends State<MainScaffold> {
           ),
         ),
         child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppSpacing.sm,
-              vertical: AppSpacing.xs,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+          child: SizedBox(
+            height: 80,
+            child: Stack(
               children: [
-                _NavItem(
-                  icon: Icons.home_rounded,
-                  label: 'Home',
-                  isSelected: _currentIndex == 0,
-                  onTap: () => _onItemTapped(0),
+                // Regular navigation items
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _NavItem(
+                      icon: Icons.home_rounded,
+                      label: 'Home',
+                      isSelected: _currentIndex == 0,
+                      onTap: () => _onItemTapped(0),
+                    ),
+                    const SizedBox(width: 80), // Space for Create button
+                    _NavItem(
+                      icon: Icons.photo_library_rounded,
+                      label: 'My',
+                      isSelected: _currentIndex == 1,
+                      onTap: () => _onItemTapped(1),
+                    ),
+                    _NavItem(
+                      icon: Icons.person_rounded,
+                      label: 'Account',
+                      isSelected: _currentIndex == 2,
+                      onTap: () => _onItemTapped(2),
+                    ),
+                  ],
                 ),
-                _NavItem(
-                  icon: Icons.photo_library_rounded,
-                  label: 'My',
-                  isSelected: _currentIndex == 1,
-                  onTap: () => _onItemTapped(1),
-                ),
-                _NavItem(
-                  icon: Icons.person_rounded,
-                  label: 'Account',
-                  isSelected: _currentIndex == 2,
-                  onTap: () => _onItemTapped(2),
+                // Elevated Create button in center
+                Positioned(
+                  left: MediaQuery.of(context).size.width / 2 - 32,
+                  top: 8,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.lime.withOpacity(0.3),
+                          blurRadius: 20,
+                          spreadRadius: 2,
+                        ),
+                      ],
+                    ),
+                    child: Material(
+                      color: AppColors.lime,
+                      shape: const CircleBorder(),
+                      child: InkWell(
+                        onTap: () {
+                          // Show template picker or scroll to templates
+                          if (_currentIndex == 0) {
+                            // Already on home, could scroll to templates section
+                          } else {
+                            context.go('/');
+                          }
+                        },
+                        customBorder: const CircleBorder(),
+                        child: Container(
+                          width: 64,
+                          height: 64,
+                          alignment: Alignment.center,
+                          child: const Icon(
+                            Icons.auto_awesome_rounded,
+                            color: AppColors.bg,
+                            size: 32,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
           ),
         ),
       ),
-      floatingActionButton: _currentIndex == 0
-          ? FloatingActionButton.extended(
-              onPressed: () {
-                // Scroll to templates section or show template picker
-              },
-              backgroundColor: AppColors.lime,
-              foregroundColor: AppColors.bg,
-              icon: const Icon(Icons.auto_awesome),
-              label: const Text('Create'),
-              elevation: 8,
-            )
-          : null,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

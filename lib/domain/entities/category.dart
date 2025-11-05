@@ -1,14 +1,16 @@
+import 'package:flutter/material.dart';
+
 /// Template category
 class Category {
   final String id;
   final String name;
-  final String emoji;
-  final String? gradient;
+  final IconData icon;
+  final Color? color;
 
   const Category({
     required this.id,
     required this.name,
-    required this.emoji,
-    this.gradient,
+    required this.icon,
+    this.color,
   });
 }

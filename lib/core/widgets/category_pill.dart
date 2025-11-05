@@ -31,9 +31,10 @@ class CategoryPill extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              category.emoji,
-              style: const TextStyle(fontSize: 32),
+            Icon(
+              category.icon,
+              size: 36,
+              color: category.color ?? AppColors.lime,
             ),
             const SizedBox(height: AppSpacing.sm),
             Text(
